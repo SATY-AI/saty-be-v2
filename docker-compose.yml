@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  app:
+    image: ghcr.io/saty-ai/saty-be:latest  # Lowercase repository name
+    ports:
+      - "8999:8999"
+    container_name: ims_be
+    profiles:
+      - prod
+    restart: unless-stopped
