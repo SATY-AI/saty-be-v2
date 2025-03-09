@@ -16,10 +16,10 @@ public class SatyCustomerRedeemMappingImpl implements SatyCustomerRedeemMapping 
         }
         return CustomerRedeem.builder()
                 .username(request.username())
-                .password(request.password())
                 .uniqueCodeProduct(request.uniqueCodeProduct())
                 .uniqueCodeWareHouse(request.uniqueCodeWareHouse())
-                .timeVerified(ZonedDateTime.parse(request.timeVerified()))
+                .timeVerified(ZonedDateTime.now())
+                .messageTrungMua(request.messageTrungMua())
                 .build();
     }
 
@@ -34,7 +34,7 @@ public class SatyCustomerRedeemMappingImpl implements SatyCustomerRedeemMapping 
                 customerRedeem.getUniqueCodeProduct(),
                 customerRedeem.getUniqueCodeWareHouse(),
                 String.valueOf(customerRedeem.getTimeVerified()),
-                "Message Trung Mua"
+                customerRedeem.getMessageTrungMua()
         );
     }
 
@@ -44,10 +44,9 @@ public class SatyCustomerRedeemMappingImpl implements SatyCustomerRedeemMapping 
             return null;
         }
         entity.setUsername(request.username());
-        entity.setPassword(request.password());
         entity.setUniqueCodeProduct(request.uniqueCodeProduct());
         entity.setUniqueCodeWareHouse(request.uniqueCodeWareHouse());
-        entity.setTimeVerified(ZonedDateTime.parse(request.timeVerified()));
+        entity.setTimeVerified(ZonedDateTime.now());
         entity.setMessageTrungMua(request.messageTrungMua());
         return entity;
     }

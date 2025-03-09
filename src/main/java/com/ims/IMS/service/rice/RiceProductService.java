@@ -21,7 +21,6 @@ public class RiceProductService {
     private RiceProductRepository riceProductRepository;
     @Autowired
     private SatyRiceProductMapping satyRiceProductMapping;
-
     @Autowired
     public RiceProductService(RiceProductRepository riceProductRepository, SatyRiceProductMapping mapper) {
         this.riceProductRepository = riceProductRepository;
