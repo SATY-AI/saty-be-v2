@@ -20,7 +20,6 @@ public class CustomerRedeem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String username;
-    private String password;
     private String uniqueCodeProduct;
     private String uniqueCodeWareHouse;
     private ZonedDateTime timeVerified;

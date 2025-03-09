@@ -53,7 +53,7 @@ public class QrCustomerCrud {
     private CustomerRedeemRepository customerRedeemRepository;
 
     @PostMapping("/post-info-product")
-    public ResponseApi<ProductInfoResponse> postInfoProduct(
+    public ResponseApi<ProductInfoResponse> postInfoProductCustomer(
             @RequestHeader("Authorization") String token,
             @RequestBody ProductInfoRequest request) {
 
@@ -177,7 +177,6 @@ public class QrCustomerCrud {
 
                 CustomerRedeem customerRedeem = CustomerRedeem.builder()
                                 .username(checkRedeemProductRequest.username())
-                                        .password(checkRedeemProductRequest.password())
                                                 .uniqueCodeProduct(riceProductData.getUniqueCode())
                                                         .uniqueCodeWareHouse((wareHouseData.getUniqueCodeWareHouse()))
                                                                 .timeVerified(ZonedDateTime.now())

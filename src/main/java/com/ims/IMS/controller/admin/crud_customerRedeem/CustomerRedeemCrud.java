@@ -70,21 +70,30 @@ public class CustomerRedeemCrud {
     }
 
     // Create a new CustomerRedeem
-    @PostMapping
-    public ResponseApi<CustomerRedeemResponse> createCustomerRedeem(@RequestBody CustomerRedeemRequest request) {
+    @PostMapping("/add-customer-redeem")
+    public ResponseApi<CustomerRedeemResponse> createCustomerRedeem(
+            @RequestHeader("Authorization") String token,
+            @RequestBody CustomerRedeemRequest request) {
+        Admin adminData = adminService.validateTokenAndGetAdmin(token);
         return ResponseApi.success(customerRedeemService.createCustomerRedeem(request));
     }
 
     // Update an existing CustomerRedeem
-    @PutMapping("/{id}")
-    public ResponseApi<CustomerRedeemResponse> updateCustomerRedeem(@PathVariable Integer id, @RequestBody CustomerRedeemRequest request) {
+    @PutMapping("/update-customer-redeem/{id}")
+    public ResponseApi<CustomerRedeemResponse> updateCustomerRedeem(
+            @RequestHeader("Authorization") String token,
+            @PathVariable Integer id, @RequestBody CustomerRedeemRequest request) {
+        Admin adminData = adminService.validateTokenAndGetAdmin(token);
         Optional<CustomerRedeemResponse> response = customerRedeemService.updateCustomerRedeem(id, request);
         return response.map(ResponseApi::success).orElseGet(() -> ResponseApi.error("404", "CustomerRedeem not found"));
     }
 
     // Delete a CustomerRedeem
     @DeleteMapping("/delete-customer-redeem/{id}")
-    public ResponseApi<String> deleteCustomerRedeem(@PathVariable Integer id) {
+    public ResponseApi<String> deleteCustomerRedeem(
+            @RequestHeader("Authorization") String token,
+            @PathVariable Integer id) {
+        Admin adminData = adminService.validateTokenAndGetAdmin(token);
         boolean deleted = customerRedeemService.deleteCustomerRedeem(id);
         return deleted ? ResponseApi.success("CustomerRedeem with ID: " + id + " deleted successfully") :
                 ResponseApi.error("404", "CustomerRedeem not found");
