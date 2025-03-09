@@ -29,7 +29,9 @@ public class CorsConfig{
                                 "http://3.27.215.5:3003","http://3.27.215.5:3100","http://3.27.215.5:3200",
                                 "http://3.27.215.5:3300","http://3.27.215.5:3400","http://3.27.215.5:3500",
                                 "http://3.27.215.5:3004", "http://journey.saty.vn", "http://awd.saty.vn",
-                                "http://agri.saty.vn", "http://mrv1.saty.vn")
+                                "http://agri.saty.vn", "http://mrv1.saty.vn", "https://ims.saty.vn",
+                                "https://agri.saty.vn", "https://mrv1.saty.vn", "https://journey.saty.vn",
+                                "https://awd.saty.vn")
                         .allowedMethods("GET", "POST", "PUT", "DELETE") // Add the HTTP methods you want to allow
                         .allowedHeaders("*");
             }
